@@ -25,7 +25,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          # bei Bedarf an dein Projekt anpassen (z.B. 18, 20, 22)
           node-version: '20'
           cache: 'npm'
 
@@ -38,15 +37,14 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite-Standard-Output
           path: ./dist
 
   deploy:
+    runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
