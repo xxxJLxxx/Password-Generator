@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { Copy, RefreshCw, Shield } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const [password, setPassword] = useState("");
@@ -92,15 +93,18 @@ const Index = () => {
       {/* Header */}
       <header className="relative z-10 glass-strong border-b border-border/30">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-center gap-3">
-            <div className="flex items-center justify-center w-12 h-12 glass rounded-xl">
-              <Shield className="w-6 h-6 text-primary" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-12 h-12 glass rounded-xl">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Passwort Generator
+                </h1>
+              </div>
             </div>
-            <div className="text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Passwort Generator
-              </h1>
-            </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>
