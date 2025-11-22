@@ -8,6 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    --background: 220 25% 97%;
+    --foreground: 220 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 10%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 15% 10%;
+
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 189 94% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 189 94% 43%;
+
+    --radius: 1rem;
+
+    --glass-bg: 0 0% 100%;
+    --glass-border: 220 15% 80%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+  }
+
+  .dark {
     --background: 210 100% 6%;
     --foreground: 210 40% 98%;
 
@@ -29,30 +66,36 @@ All colors MUST be HSL.
     --accent: 189 94% 43%;
     --accent-foreground: 210 100% 6%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 210 50% 20%;
     --input: 210 50% 15%;
     --ring: 189 94% 43%;
 
-    --radius: 1rem;
-
     --glass-bg: 210 50% 10%;
     --glass-border: 210 40% 30%;
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    transition: border-color 0.3s ease;
   }
 
   body {
-    @apply bg-gradient-to-br from-[hsl(210,100%,6%)] via-[hsl(210,90%,10%)] to-[hsl(189,90%,15%)] text-foreground min-h-screen;
+    @apply bg-gradient-to-br text-foreground min-h-screen;
     background-attachment: fixed;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    @apply from-[hsl(220,25%,97%)] via-[hsl(220,20%,94%)] to-[hsl(189,30%,92%)];
+  }
+
+  .dark body {
+    @apply from-[hsl(210,100%,6%)] via-[hsl(210,90%,10%)] to-[hsl(189,90%,15%)];
   }
 }
 
@@ -60,24 +103,42 @@ All colors MUST be HSL.
   .glass {
     background: linear-gradient(
       135deg,
-      hsl(var(--glass-bg) / 0.4),
-      hsl(var(--glass-bg) / 0.2)
+      hsl(var(--glass-bg) / 0.7),
+      hsl(var(--glass-bg) / 0.5)
     );
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid hsl(var(--glass-border) / 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .dark .glass {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg) / 0.4),
+      hsl(var(--glass-bg) / 0.2)
+    );
     box-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.37);
   }
 
   .glass-strong {
     background: linear-gradient(
       135deg,
-      hsl(var(--glass-bg) / 0.6),
-      hsl(var(--glass-bg) / 0.4)
+      hsl(var(--glass-bg) / 0.85),
+      hsl(var(--glass-bg) / 0.7)
     );
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border) / 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .dark .glass-strong {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg) / 0.6),
+      hsl(var(--glass-bg) / 0.4)
+    );
     box-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.5);
   }
 }
